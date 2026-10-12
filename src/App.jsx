@@ -1,5 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import NorthEastIcon from "@mui/icons-material/NorthEast";
+import SouthEastIcon from "@mui/icons-material/SouthEast";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import CheckIcon from "@mui/icons-material/Check";
+import AddIcon from "@mui/icons-material/Add";
+import CloseIcon from "@mui/icons-material/Close";
+import MenuIcon from "@mui/icons-material/Menu";
+import CircleIcon from "@mui/icons-material/Circle";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutlined";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 
 const navItems = [
   ["About", "about"],
@@ -177,23 +189,23 @@ function Header() {
     <>
       <div className="mobile-bar">
         <Brand />
-        <button ref={menuButtonRef} className="sidebar-toggle" type="button" aria-label="Open navigation" aria-expanded={menuOpen} aria-controls="sidebar" onClick={() => setMenuOpen(true)}><span /><span /></button>
+        <button ref={menuButtonRef} className="sidebar-toggle" type="button" aria-label="Open navigation" aria-expanded={menuOpen} aria-controls="sidebar" onClick={() => setMenuOpen(true)}><MenuIcon className="ui-icon" /></button>
       </div>
       {menuOpen && <button className="sidebar-backdrop" type="button" aria-label="Close navigation" tabIndex={-1} onClick={() => setMenuOpen(false)} />}
       <header ref={sidebarRef} className={`site-sidebar${menuOpen ? " is-open" : ""}`} id="sidebar">
-        <div className="sidebar-top"><Brand /><button className="sidebar-close" type="button" aria-label="Close navigation" onClick={() => setMenuOpen(false)}>×</button></div>
+        <div className="sidebar-top"><Brand /><button className="sidebar-close" type="button" aria-label="Close navigation" onClick={() => setMenuOpen(false)}><CloseIcon className="ui-icon" /></button></div>
         <nav className="sidebar-nav" aria-label="Primary navigation">
           {sidebarItems.map(([label, id], index) => (
             <a key={id} href={`#${id}`} aria-current={activeSection === id ? "location" : undefined} onClick={() => setMenuOpen(false)}>
-              <span className="sidebar-number">{String(index + 1).padStart(2, "0")}</span><span className="sidebar-rule" /><span>{label}</span><span className="sidebar-link-arrow" aria-hidden="true">↗</span>
+              <span className="sidebar-number">{String(index + 1).padStart(2, "0")}</span><span className="sidebar-rule" /><span>{label}</span><span className="sidebar-link-arrow" aria-hidden="true"><NorthEastIcon className="ui-icon" /></span>
             </a>
           ))}
         </nav>
         <div className="sidebar-bottom">
-          <p className="sidebar-status"><span className="status-dot" />Open to remote opportunities</p>
-          <a className="button button-accent" href="#contact" onClick={() => setMenuOpen(false)}>Let’s work together <span aria-hidden="true">↗</span></a>
-          <p className="sidebar-location">Las Piñas City, Philippines</p>
-          <div className="sidebar-direct"><a href="mailto:jadrpanes17@gmail.com">Email</a><a href="tel:+639452749552">Call</a><a href="#home" onClick={() => setMenuOpen(false)}>Back to top ↑</a></div>
+          <p className="sidebar-status"><span className="status-dot" aria-hidden="true"><CircleIcon className="ui-icon" /></span>Open to remote opportunities</p>
+          <a className="button button-accent" href="#contact" onClick={() => setMenuOpen(false)}>Let’s work together <span aria-hidden="true"><NorthEastIcon className="ui-icon" /></span></a>
+          <p className="sidebar-location"><LocationOnOutlinedIcon className="ui-icon" />Las Piñas City, Philippines</p>
+          <div className="sidebar-direct"><a href="mailto:jadrpanes17@gmail.com">Email</a><a href="tel:+639452749552">Call</a><a href="#home" onClick={() => setMenuOpen(false)}>Back to top <ArrowUpwardIcon className="ui-icon" /></a></div>
         </div>
       </header>
     </>
@@ -249,7 +261,7 @@ function Experience() {
               <h3>Case Manager</h3>
               <p className="company">Teleperformance · Stellantis FCA</p>
               <p>I manage customer cases involving vehicle recalls, service concerns, complaints, and requests—coordinating with internal departments so each case can be reviewed, progressed, and resolved.</p>
-              <ul><li>Case intake and documentation</li><li>Information gathering and review</li><li>Department escalation</li><li>Customer updates and next steps</li></ul>
+              <ul><li><NorthEastIcon className="ui-icon" />Case intake and documentation</li><li><NorthEastIcon className="ui-icon" />Information gathering and review</li><li><NorthEastIcon className="ui-icon" />Department escalation</li><li><NorthEastIcon className="ui-icon" />Customer updates and next steps</li></ul>
             </div>
           </article>
           <article className="timeline-item reveal">
@@ -258,7 +270,7 @@ function Experience() {
               <h3>Customer Expert</h3>
               <p className="company">Coforge BPS · Fifth Third Bank</p>
               <p>Provided phone-based support for everyday banking needs, account services, transactions, card requests, disputes, and online banking concerns while following security procedures.</p>
-              <ul><li>Account inquiries and updates</li><li>Card and funds requests</li><li>Dispute documentation</li><li>Online banking support</li></ul>
+              <ul><li><NorthEastIcon className="ui-icon" />Account inquiries and updates</li><li><NorthEastIcon className="ui-icon" />Card and funds requests</li><li><NorthEastIcon className="ui-icon" />Dispute documentation</li><li><NorthEastIcon className="ui-icon" />Online banking support</li></ul>
             </div>
           </article>
         </div>
@@ -279,7 +291,7 @@ function ProjectSupport() {
       </div>
       <div className="ticket-mockup" aria-label="Sample customer service ticket">
         <div className="mockup-top"><span>Case / AUTO-2026-0148</span><span className="pill pill-orange">Escalated</span></div>
-        <div className="ticket-body"><span className="ticket-icon">!</span><div><small>Customer Concern</small><h4>Vehicle Recall</h4><p>Customer has been unable to arrange the required repair and is requesting support.</p></div></div>
+        <div className="ticket-body"><span className="ticket-icon" aria-hidden="true"><ErrorOutlineIcon className="ui-icon" /></span><div><small>Customer Concern</small><h4>Vehicle Recall</h4><p>Customer has been unable to arrange the required repair and is requesting support.</p></div></div>
         <div className="ticket-fields"><p><small>Priority</small>Standard</p><p><small>Status</small>For review</p><p><small>Next step</small>Department update</p></div>
         <div className="ticket-progress" aria-hidden="true"><span /><span /><span /><span className="muted" /></div>
       </div>
@@ -324,10 +336,10 @@ function ProjectEmail() {
       <div className="inbox-mockup" aria-label="Sample organized inbox">
         <div className="inbox-sidebar"><strong>Inbox</strong><span>Urgent <b>2</b></span><span>Follow-up <b>5</b></span><span>General <b>8</b></span><span>Completed</span></div>
         <div className="email-list">
-          <div className="email-item"><span className="priority red" /><p><strong>Service issue requires immediate assistance</strong><small>Review and respond immediately</small></p><time>9:16</time></div>
-          <div className="email-item"><span className="priority orange" /><p><strong>Following up on my previous request</strong><small>Review conversation and update</small></p><time>8:42</time></div>
-          <div className="email-item"><span className="priority blue" /><p><strong>Question about your services</strong><small>General inquiry</small></p><time>Mon</time></div>
-          <div className="email-item"><span className="priority green" /><p><strong>Thank you for resolving my concern</strong><small>Ready to archive</small></p><time>Fri</time></div>
+          <div className="email-item"><span className="priority red" aria-hidden="true"><CircleIcon className="ui-icon" /></span><p><strong>Service issue requires immediate assistance</strong><small>Review and respond immediately</small></p><time>9:16</time></div>
+          <div className="email-item"><span className="priority orange" aria-hidden="true"><CircleIcon className="ui-icon" /></span><p><strong>Following up on my previous request</strong><small>Review conversation and update</small></p><time>8:42</time></div>
+          <div className="email-item"><span className="priority blue" aria-hidden="true"><CircleIcon className="ui-icon" /></span><p><strong>Question about your services</strong><small>General inquiry</small></p><time>Mon</time></div>
+          <div className="email-item"><span className="priority green" aria-hidden="true"><CircleIcon className="ui-icon" /></span><p><strong>Thank you for resolving my concern</strong><small>Ready to archive</small></p><time>Fri</time></div>
         </div>
       </div>
     </>
@@ -397,7 +409,7 @@ function ProjectSocial() {
             <figure key={sample.src}>
               <button className="gallery-image-button" type="button" onClick={() => setActiveImage(samples.indexOf(sample))} aria-label={`Enlarge ${sample.label}`}>
                 <img src={sample.src} alt={sample.alt} loading="lazy" />
-                <span className="zoom-hint" aria-hidden="true">View ↗</span>
+                <span className="zoom-hint" aria-hidden="true">View <NorthEastIcon className="ui-icon" /></span>
               </button>
               <figcaption>{sample.label}</figcaption>
             </figure>
@@ -406,7 +418,7 @@ function ProjectSocial() {
       </div>
       {activeImage !== null && createPortal(
         <div className="lightbox" role="dialog" aria-modal="true" aria-label={`${samples[activeImage].label} enlarged`} onClick={(event) => { if (event.target === event.currentTarget) setActiveImage(null); }}>
-          <button ref={closeButtonRef} className="lightbox-close" type="button" onClick={() => setActiveImage(null)} aria-label="Close enlarged image">×</button>
+          <button ref={closeButtonRef} className="lightbox-close" type="button" onClick={() => setActiveImage(null)} aria-label="Close enlarged image"><CloseIcon className="ui-icon" /></button>
           <img className="lightbox-image" src={samples[activeImage].src} alt={samples[activeImage].alt} />
         </div>,
         document.body,
@@ -476,14 +488,14 @@ function FAQ() {
           <p className="section-number">12 / FAQ</p>
           <h2 id="faq-title">Frequently Asked <em>Questions</em></h2>
           <p>Something else in mind? Send me an email and tell me what support would make your week easier.</p>
-          <a className="text-link" href="mailto:jadrpanes17@gmail.com">Email Jadr <span aria-hidden="true">↗</span></a>
+          <a className="text-link" href="mailto:jadrpanes17@gmail.com">Email Jadr <span aria-hidden="true"><NorthEastIcon className="ui-icon" /></span></a>
         </div>
         <div className="faq-list">
           {faqItems.map(([question, answer], index) => {
             const isOpen = openItem === index;
             return (
               <article className={`faq-item reveal${isOpen ? " is-open" : ""}`} key={question}>
-                <h3><button type="button" aria-expanded={isOpen} aria-controls={`faq-panel-${index}`} onClick={() => setOpenItem(isOpen ? -1 : index)}>{question}<span aria-hidden="true">+</span></button></h3>
+                <h3><button type="button" aria-expanded={isOpen} aria-controls={`faq-panel-${index}`} onClick={() => setOpenItem(isOpen ? -1 : index)}>{question}<span aria-hidden="true"><AddIcon className="ui-icon" /></span></button></h3>
                 <div className="faq-answer" id={`faq-panel-${index}`} hidden={!isOpen}><p>{answer}</p></div>
               </article>
             );
@@ -504,7 +516,7 @@ function FinalCTA() {
         <p>Whether you need help with:</p>
         <ul className="skill-tags"><li>Customer Support</li><li>Administrative Tasks</li><li>CRM & Data</li><li>Email Management</li><li>Canva & Social Media</li></ul>
         <p>Let’s talk.</p>
-        <a className="button button-dark" href="#contact">Let’s work together <span aria-hidden="true">↗</span></a>
+        <a className="button button-dark" href="#contact">Let’s work together <span aria-hidden="true"><NorthEastIcon className="ui-icon" /></span></a>
       </div>
     </section>
   );
@@ -554,13 +566,13 @@ function Contact() {
           </div>
           <label>Company / Business<input type="text" name="company" autoComplete="organization" /></label>
           <label>What can I help you with?
-            <select name="service" defaultValue="Administrative Support">
+            <div className="select-field"><select name="service" defaultValue="Administrative Support">
               {services.map((service) => <option key={service.title} value={service.title}>{service.title}</option>)}
               <option value="Other Support">Other Support</option>
-            </select>
+            </select><ExpandMoreIcon className="ui-icon" /></div>
           </label>
           <label>Message<textarea name="message" rows="4" required /></label>
-          <button className="button button-dark form-submit" type="submit">Send message <span aria-hidden="true">↗</span></button>
+          <button className="button button-dark form-submit" type="submit">Send message <span aria-hidden="true"><NorthEastIcon className="ui-icon" /></span></button>
           <p className="form-status" role="status" aria-live="polite">{status}</p>
         </form>
       </div>
@@ -576,7 +588,7 @@ function Footer() {
         <nav aria-label="Footer navigation">{navItems.map(([label, id]) => <a key={id} href={`#${id}`}>{label}</a>)}<a href="#contact">Contact</a></nav>
         <div className="footer-contact"><a href="mailto:jadrpanes17@gmail.com">jadrpanes17@gmail.com</a><a href="tel:+639452749552">+63 945 274 9552</a><span>Las Piñas City, Philippines</span></div>
       </div>
-      <div className="footer-bottom page-shell"><span>© {new Date().getFullYear()} Jadr Panes. All rights reserved.</span><a href="#home">Back to top ↑</a></div>
+      <div className="footer-bottom page-shell"><span>© {new Date().getFullYear()} Jadr Panes. All rights reserved.</span><a href="#home">Back to top <ArrowUpwardIcon className="ui-icon" /></a></div>
     </footer>
   );
 }
@@ -600,19 +612,19 @@ export default function App() {
         <section className="hero section-dark" id="home" aria-labelledby="hero-title">
           <div className="hero-grid page-shell">
             <div className="hero-copy reveal">
-              <p className="eyebrow">Virtual assistant <span>•</span> Customer support <span>•</span> Administrative support</p>
+              <p className="eyebrow">Virtual assistant <span aria-hidden="true"><CircleIcon className="ui-icon" /></span> Customer support <span aria-hidden="true"><CircleIcon className="ui-icon" /></span> Administrative support</p>
               <h1 id="hero-title">The reliable support <em>behind your business.</em></h1>
               <p className="hero-intro">Hi, I'm Jadr Panes, a Virtual Assistant with professional experience in customer service, account support, administrative assistance, CRM management, data entry, email management, and digital content support.</p>
-              <div className="hero-actions"><a className="button button-accent" href="#services">View my services <span aria-hidden="true">↓</span></a><a className="button button-ghost" href="#contact">Let’s work together <span aria-hidden="true">↗</span></a></div>
-              <ul className="hero-notes" aria-label="Quick details"><li>Philippines-based</li><li>Available remotely</li><li>Privacy-conscious</li></ul>
+              <div className="hero-actions"><a className="button button-accent" href="#services">View my services <span aria-hidden="true"><ArrowDownwardIcon className="ui-icon" /></span></a><a className="button button-ghost" href="#contact">Let’s work together <span aria-hidden="true"><NorthEastIcon className="ui-icon" /></span></a></div>
+              <ul className="hero-notes" aria-label="Quick details"><li><CheckIcon className="ui-icon" />Philippines-based</li><li><CheckIcon className="ui-icon" />Available remotely</li><li><CheckIcon className="ui-icon" />Privacy-conscious</li></ul>
             </div>
             <div className="hero-visual reveal">
               <div className="hero-image-frame"><img src="/jadr-photos/3.png" alt="Portrait of Jadr Panes wearing sunglasses against a pink background" /></div>
               <div className="hero-stamp" aria-hidden="true"><span>Organized</span><strong>Ready</strong><span>Responsive</span></div>
-              <div className="availability-card"><span className="status-dot" /><p><small>Current status</small><strong>Open to remote opportunities</strong></p></div>
+              <div className="availability-card"><span className="status-dot" aria-hidden="true"><CircleIcon className="ui-icon" /></span><p><small>Current status</small><strong>Open to remote opportunities</strong></p></div>
             </div>
           </div>
-          <a className="scroll-cue" href="#credentials">Scroll to explore <span aria-hidden="true">↓</span></a>
+          <a className="scroll-cue" href="#credentials">Scroll to explore <span aria-hidden="true"><ArrowDownwardIcon className="ui-icon" /></span></a>
         </section>
 
         <section className="credentials" id="credentials" aria-label="Quick credentials">
@@ -627,7 +639,7 @@ export default function App() {
         <section className="about section-light" id="about" aria-labelledby="about-title">
           <div className="page-shell about-grid">
             <div className="section-intro reveal"><p className="section-number">03 / About Me</p><h2 id="about-title">A little <em>about me</em></h2></div>
-            <div className="about-copy reveal"><p className="lede">Professional experience. Practical support. A client-first mindset.</p><p>I’m Jadr Panes, a Virtual Assistant with a professional background in customer service and account support. I’ve supported automotive and financial accounts where accuracy, communication, documentation, privacy, and problem-solving are essential.</p><p>I now bring those skills into virtual assistance—helping businesses manage everyday tasks, customer communication, information, and digital support with care.</p><a className="text-link" href="#experience">See my professional journey <span aria-hidden="true">↘</span></a></div>
+            <div className="about-copy reveal"><p className="lede">Professional experience. Practical support. A client-first mindset.</p><p>I’m Jadr Panes, a Virtual Assistant with a professional background in customer service and account support. I’ve supported automotive and financial accounts where accuracy, communication, documentation, privacy, and problem-solving are essential.</p><p>I now bring those skills into virtual assistance—helping businesses manage everyday tasks, customer communication, information, and digital support with care.</p><a className="text-link" href="#experience">See my professional journey <span aria-hidden="true"><SouthEastIcon className="ui-icon" /></span></a></div>
             <figure className="about-photo reveal"><img src="/jadr-photos/5.png" alt="Portrait of Jadr Panes against a vivid magenta background" loading="lazy" /><figcaption>Based in Las Piñas City<br />Working remotely worldwide</figcaption></figure>
           </div>
         </section>
@@ -646,7 +658,7 @@ export default function App() {
 
         <section className="process section-cream" id="process" aria-labelledby="process-title">
           <div className="page-shell process-grid">
-            <div className="process-heading reveal"><p className="section-number">08 / My Work Process</p><h2 id="process-title">Simple process. <em>Reliable execution.</em></h2><p>Clear steps keep the work organized and make collaboration easy from the first conversation to final delivery.</p><a className="button button-dark" href="#contact">Start a conversation <span aria-hidden="true">↗</span></a></div>
+            <div className="process-heading reveal"><p className="section-number">08 / My Work Process</p><h2 id="process-title">Simple process. <em>Reliable execution.</em></h2><p>Clear steps keep the work organized and make collaboration easy from the first conversation to final delivery.</p><a className="button button-dark" href="#contact">Start a conversation <span aria-hidden="true"><NorthEastIcon className="ui-icon" /></span></a></div>
             <ol className="process-list">{processSteps.map(([title, text], index) => <li className="reveal" key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol>
           </div>
         </section>

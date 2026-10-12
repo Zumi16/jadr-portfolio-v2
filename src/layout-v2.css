@@ -38,7 +38,7 @@ main > section[id] { scroll-margin-top: 24px; }
 .sidebar-status .status-dot { width: 5px; height: 5px; box-shadow: none; }
 .sidebar-bottom .button { width: 100%; gap: 15px; min-height: 45px; padding: 0 15px; font-size: 11px; }
 .sidebar-location { margin: 22px 0 7px; color: rgba(251,248,242,.5); font-size: 10px; }
-.sidebar-location::before { content: "◎"; margin-right: 7px; color: var(--pink); }
+.sidebar-location .ui-icon { margin-right: 7px; color: var(--pink); }
 .sidebar-direct { display: flex; flex-wrap: wrap; gap: 16px; color: rgba(251,248,242,.6); font-size: 10px; }
 .sidebar-direct a:hover { color: var(--acid); }
 
@@ -57,8 +57,8 @@ main > section[id] { scroll-margin-top: 24px; }
   main > section[id] { scroll-margin-top: 78px; }
   .mobile-bar { position: fixed; z-index: 180; inset: 0 0 auto; display: flex; justify-content: space-between; align-items: center; height: 70px; padding: 0 28px; background: var(--ink); color: var(--paper); border-bottom: 1px solid rgba(255,255,255,.12); }
   .mobile-bar .brand-copy strong { font-size: 23px; }
-  .sidebar-toggle { display: grid; align-content: center; gap: 7px; width: 44px; height: 44px; border: 0; background: transparent; color: var(--paper); padding: 10px; cursor: pointer; }
-  .sidebar-toggle span { height: 1px; background: currentColor; }
+  .sidebar-toggle { display: grid; place-items: center; width: 44px; height: 44px; border: 0; background: transparent; color: var(--paper); padding: 0; cursor: pointer; }
+  .sidebar-toggle .ui-icon { font-size: 24px; }
   .site-sidebar { width: min(330px, 88vw); visibility: hidden; transform: translateX(-100%); transition: transform .25s ease, visibility .25s; padding-top: 26px; }
   .site-sidebar.is-open { visibility: visible; transform: none; }
   .sidebar-top { display: flex; align-items: center; justify-content: space-between; }
