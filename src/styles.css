@@ -124,7 +124,7 @@ h2 { font-size: clamp(52px, 6.1vw, 92px); }
 .why-grid article { min-height: 310px; padding: 28px; border-right: 1px solid rgba(23,23,19,.35); display: flex; flex-direction: column; }
 .why-grid article:last-child { border: 0; }
 .why-grid article > span { font-family: var(--serif); font-style: italic; }
-.why-grid h3 { margin-top: auto; }
+.why-grid h3 { margin-top: 30px; }
 .why-grid p { margin-bottom: 0; font-size: 13px; color: rgba(23,23,19,.68); }
 
 .experience-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 9vw; }
