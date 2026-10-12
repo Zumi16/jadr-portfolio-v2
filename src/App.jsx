@@ -490,11 +490,11 @@ function FAQ() {
           <p>Something else in mind? Send me an email and tell me what support would make your week easier.</p>
           <a className="text-link" href="mailto:jadrpanes17@gmail.com">Email Jadr <span aria-hidden="true"><NorthEastIcon className="ui-icon" /></span></a>
         </div>
-        <div className="faq-list">
+        <div className="faq-list reveal">
           {faqItems.map(([question, answer], index) => {
             const isOpen = openItem === index;
             return (
-              <article className={`faq-item reveal${isOpen ? " is-open" : ""}`} key={question}>
+              <article className={`faq-item${isOpen ? " is-open" : ""}`} key={question}>
                 <h3><button type="button" aria-expanded={isOpen} aria-controls={`faq-panel-${index}`} onClick={() => setOpenItem(isOpen ? -1 : index)}>{question}<span aria-hidden="true"><AddIcon className="ui-icon" /></span></button></h3>
                 <div className="faq-answer" id={`faq-panel-${index}`} hidden={!isOpen}><p>{answer}</p></div>
               </article>
