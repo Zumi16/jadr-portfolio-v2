@@ -1,0 +1,81 @@
+/* V2 matches V1's page design; only navigation and its reserved space differ. */
+:root {
+  --sidebar-width: 254px;
+  --shell: min(1280px, calc(100% - 96px));
+}
+
+main, .site-footer { margin-left: var(--sidebar-width); }
+main > section[id] { scroll-margin-top: 24px; }
+.mobile-bar, .sidebar-toggle, .sidebar-close, .sidebar-backdrop { display: none; }
+
+.site-sidebar {
+  position: fixed;
+  z-index: 200;
+  inset: 0 auto 0 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  width: var(--sidebar-width);
+  padding: 38px 25px 28px;
+  color: var(--paper);
+  background: var(--ink);
+  border-right: 1px solid rgba(255,255,255,.12);
+}
+.sidebar-top .brand { gap: 10px; }
+.sidebar-top .brand-mark { width: 42px; height: 49px; border-radius: 24px 24px 0 0; color: var(--pink); font-size: 25px; }
+.sidebar-top .brand-copy strong { font-size: 30px; }
+.sidebar-top .brand-copy small { font-size: 8px; letter-spacing: .16em; }
+.sidebar-nav { display: flex; flex-direction: column; justify-content: center; gap: 7px; overflow-y: auto; padding: 30px 0; }
+.sidebar-nav a { display: flex; align-items: center; gap: 13px; min-height: 43px; color: rgba(251,248,242,.57); font-size: 13px; transition: color .2s; }
+.sidebar-number { width: 17px; color: var(--pink); font: italic 12px var(--serif); opacity: .6; }
+.sidebar-rule { width: 13px; height: 1px; background: currentColor; opacity: .4; transition: width .2s; }
+.sidebar-link-arrow { margin-left: auto; opacity: 0; transition: opacity .2s; }
+.sidebar-nav a:hover, .sidebar-nav a[aria-current] { color: var(--paper); }
+.sidebar-nav a[aria-current] .sidebar-number { opacity: 1; }
+.sidebar-nav a[aria-current] .sidebar-rule { width: 24px; background: var(--acid); opacity: 1; }
+.sidebar-nav a:hover .sidebar-link-arrow, .sidebar-nav a[aria-current] .sidebar-link-arrow { opacity: 1; color: var(--acid); }
+.sidebar-bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 23px; }
+.sidebar-status { display: flex; align-items: center; gap: 9px; margin: 0 0 18px; font-size: 10px; color: rgba(251,248,242,.65); }
+.sidebar-status .status-dot { width: 5px; height: 5px; box-shadow: none; }
+.sidebar-bottom .button { width: 100%; gap: 15px; min-height: 45px; padding: 0 15px; font-size: 11px; }
+.sidebar-location { margin: 22px 0 7px; color: rgba(251,248,242,.5); font-size: 10px; }
+.sidebar-location::before { content: "◎"; margin-right: 7px; color: var(--pink); }
+.sidebar-direct { display: flex; flex-wrap: wrap; gap: 16px; color: rgba(251,248,242,.6); font-size: 10px; }
+.sidebar-direct a:hover { color: var(--acid); }
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  :root { --sidebar-width: 220px; }
+  .site-sidebar { padding-inline: 20px; }
+  .sidebar-top .brand-copy strong { font-size: 25px; }
+}
+
+@media (max-width: 1050px) {
+  :root { --shell: min(960px, calc(100% - 56px)); }
+}
+
+@media (max-width: 900px) {
+  :root { --sidebar-width: 0px; }
+  main > section[id] { scroll-margin-top: 78px; }
+  .mobile-bar { position: fixed; z-index: 180; inset: 0 0 auto; display: flex; justify-content: space-between; align-items: center; height: 70px; padding: 0 28px; background: var(--ink); color: var(--paper); border-bottom: 1px solid rgba(255,255,255,.12); }
+  .mobile-bar .brand-copy strong { font-size: 23px; }
+  .sidebar-toggle { display: grid; align-content: center; gap: 7px; width: 44px; height: 44px; border: 0; background: transparent; color: var(--paper); padding: 10px; cursor: pointer; }
+  .sidebar-toggle span { height: 1px; background: currentColor; }
+  .site-sidebar { width: min(330px, 88vw); visibility: hidden; transform: translateX(-100%); transition: transform .25s ease, visibility .25s; padding-top: 26px; }
+  .site-sidebar.is-open { visibility: visible; transform: none; }
+  .sidebar-top { display: flex; align-items: center; justify-content: space-between; }
+  .sidebar-close { display: block; width: 35px; height: 35px; border: 0; background: transparent; color: var(--paper); font-size: 28px; cursor: pointer; }
+  .sidebar-backdrop { position: fixed; z-index: 190; inset: 0; display: block; border: 0; background: rgba(0,0,0,.65); }
+}
+
+@media (max-width: 760px) {
+  :root { --shell: calc(100% - 36px); }
+  .mobile-bar { padding-inline: 18px; }
+}
+
+@media (max-height: 680px) and (min-width: 901px) {
+  .site-sidebar { padding-top: 24px; padding-bottom: 20px; }
+  .sidebar-nav { gap: 0; padding-block: 16px; }
+  .sidebar-nav a { min-height: 36px; }
+  .sidebar-bottom { padding-top: 16px; }
+  .sidebar-status { margin-bottom: 12px; }
+  .sidebar-location { margin-top: 14px; }
+}
